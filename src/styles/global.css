@@ -16,38 +16,8 @@
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  --font-mono: 'JetBrains Mono', Menlo, Monaco, Lucida Console, Liberation Mono,
-    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  --font-ja-gothic: 'Hiragino Sans W3', 'Hiragino Kaku Gothic ProN',
-    'ヒラギノ角ゴ ProN W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic';
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Regular.eot')
-      format('embedded-opentype'),
-    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Regular.woff2')
-      format('woff2'),
-    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff/JetBrainsMono-Regular.woff')
-      format('woff'),
-    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/ttf/JetBrainsMono-Regular.ttf')
-      format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Italic.eot')
-      format('embedded-opentype'),
-    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Italic.woff2')
-      format('woff2'),
-    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff/JetBrainsMono-Italic.woff')
-      format('woff'),
-    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/ttf/JetBrainsMono-Italic.ttf')
-      format('truetype');
-  font-weight: normal;
-  font-style: italic;
+  --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 * {
@@ -66,46 +36,13 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-    var(--font-ja-gothic), sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-  background-image: linear-gradient(
-      -45deg,
-      #fff 0,
-      #fff 1.9rem,
-      transparent 1.9rem,
-      transparent 2.34rem,
-      #fff 2.34rem,
-      #fff
-    ),
-    linear-gradient(
-      45deg,
-      #fff 0,
-      #fff 1.9rem,
-      transparent 1.9rem,
-      transparent 2.34rem,
-      #fff 2.34rem,
-      #fff
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 0,
-      transparent 2.08rem,
-      #ddd 2.12rem,
-      transparent 2.16rem,
-      transparent
-    ),
-    linear-gradient(
-      45deg,
-      transparent 0,
-      transparent 2.08rem,
-      #ddd 2.12rem,
-      transparent 2.16rem,
-      transparent
-    );
+  background-image: radial-gradient(#ddd 1px, transparent 1px),
+    radial-gradient(#ddd 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
   background-attachment: fixed;
-  background-position: 0 0, 1.5rem 1.5rem, 0 0, 1.5rem 1.5rem;
-  background-size: 3rem 3rem;
+  background-size: 50px 50px;
 
   /* Hack */
   overflow-x: hidden;
@@ -319,7 +256,6 @@ a {
   text-decoration: none;
 }
 a:hover {
-  cursor: pointer;
   color: #3291ff;
 }
 
@@ -342,33 +278,17 @@ mark {
 }
 
 h1 {
-  font-family: var(--font-mono);
   margin: var(--gap-double) 0 calc(0.5 * var(--gap)) 0;
-  letter-spacing: 0.09em;
   font-size: 2.25rem;
-  font-weight: 300;
-  color: var(--accents-2);
+  font-weight: 800;
+  letter-spacing: -0.05rem;
 }
 
 h2 {
-  font-family: var(--font-mono);
   font-weight: 300;
   font-size: 1.25rem;
   letter-spacing: -0.02rem;
-  color: var(--accents-2);
-}
-
-h3 {
-  font-family: var(--font-mono);
-  font-weight: 300;
-  font-size: 1rem;
-  padding-left: 0.5rem;
-  letter-spacing: -0.02rem;
-  color: var(--accents-2);
-}
-
-h3::before {
-  content: '> ';
+  color: var(--accents-3);
 }
 
 .video {
@@ -387,7 +307,6 @@ h3::before {
 
 p {
   color: #555;
-  font-family: var(--font-mono), var(--font-ja-gothic);
   font-weight: 400;
   font-size: 0.94rem;
   line-height: 1.7;
@@ -439,8 +358,7 @@ code {
 }
 
 footer {
-  padding-top: 3em;
-  padding-bottom: 2em;
+  padding: 2em 0;
   text-align: center;
 }
 

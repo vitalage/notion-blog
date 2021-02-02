@@ -43,6 +43,11 @@
   cursor: pointer;
 }
 
+.titleContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 .draftBadge {
   border-radius: 16px;
   background-color: black;
@@ -60,42 +65,32 @@
 .postPreview {
   max-width: 600px;
   margin: 10px auto;
-  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .postPreview:last-child {
   border-bottom: none;
 }
 
-.postPreview h3 {
-  display: inline;
-  margin: 0;
-}
-
-.postPreview h3::before {
-  content: '';
-}
-
+.postPreview h3,
 .post h1 {
   margin-bottom: 0;
 }
 
 .post h1 {
-  letter-spacing: unset;
   margin-top: 0;
 }
 
 .post :global(h2),
 .post :global(h3) {
-  margin: 2rem 0 1.5rem 0;
+  margin: 3rem 0 1.5rem 0;
 }
 
 .post :global(video),
-.post :global(img) {
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
-}
+.post :global(img),
 .post :global(.asset-wrapper) {
-  margin: 3rem auto 2rem;
+  margin: 2rem auto;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   display: block;
 }
@@ -120,18 +115,12 @@
   margin-left: 8px;
 }
 
+.post :global(.underline) {
+  text-decoration: underline;
+}
+
 .postPreview :global(.posted) {
-  margin: 0.5em 0 0.5em 1em;
-}
-
-.postedDate {
-  margin-right: 1rem;
-}
-
-.dateAndTitle {
-  display: inline-flex;
-  align-items: baseline;
-  font-family: var(--font-mono);
+  margin-bottom: 0.5em;
 }
 
 .post {
@@ -140,21 +129,10 @@
   padding: 5%;
 }
 
-.post :global(.posted) {
-  font-family: var(--font-mono);
-  margin: 1rem 0 1rem;
-}
-
 .post :global(hr) {
   margin-bottom: 2em;
 }
 
 .post :global(a + p) {
   margin-top: 0;
-}
-
-.post :global(ul, li) {
-  font-family: var(--font-mono), var(--font-ja-gothic);
-  color: #555;
-  line-height: 1.7;
 }
