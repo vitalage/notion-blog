@@ -28,7 +28,7 @@ export async function getStaticProps({ params: { slug }, preview }) {
         redirect: '/blog',
         preview: false,
       },
-      revalidate: 5,
+      unstable_revalidate: 5,
     }
   }
   const postData = await getPageData(post.id)
@@ -64,7 +64,7 @@ export async function getStaticProps({ params: { slug }, preview }) {
       post,
       preview: preview || false,
     },
-    revalidate: 10,
+    unstable_revalidate: 10,
   }
 }
 
@@ -155,7 +155,9 @@ const RenderPost = ({ post, redirect, preview }) => {
         {post.Authors.length > 0 && (
           <div className="authors">By: {post.Authors.join(' ')}</div>
         )}
-        {post.Date && <div className="posted">{getDateStr(post.Date)}</div>}
+        {post.Date && (
+          <div className="posted">Posted: {getDateStr(post.Date)}</div>
+        )}
 
         <hr />
 
@@ -256,11 +258,11 @@ const RenderPost = ({ post, redirect, preview }) => {
 
               const isImage = type === 'image'
               const Comp = isImage ? 'img' : 'video'
-              const useWrapper = Boolean(block_aspect_ratio)
+              const useWrapper = block_aspect_ratio && !block_height
               const childStyle: CSSProperties = useWrapper
                 ? {
-                    width: '90%',
-                    height: '90%',
+                    width: '100%',
+                    height: '100%',
                     border: 'none',
                     position: 'absolute',
                     top: 0,
@@ -270,7 +272,7 @@ const RenderPost = ({ post, redirect, preview }) => {
                     border: 'none',
                     height: block_height,
                     display: 'block',
-                    maxWidth: '90%',
+                    maxWidth: '100%',
                   }
 
               let child = null
@@ -308,7 +310,6 @@ const RenderPost = ({ post, redirect, preview }) => {
                   <div
                     style={{
                       paddingTop: `${Math.round(block_aspect_ratio * 100)}%`,
-                      paddingLeft: '5%',
                       position: 'relative',
                     }}
                     className="asset-wrapper"
@@ -391,6 +392,17 @@ const RenderPost = ({ post, redirect, preview }) => {
                     dangerouslySetInnerHTML={{ __html: properties.html }}
                     key={id}
                   />
+                )
+              }
+              break
+            }
+            case 'equation': {
+              if (properties && properties.title) {
+                const content = properties.title[0][0]
+                toRender.push(
+                  <components.Equation key={id} displayMode={true}>
+                    {content}
+                  </components.Equation>
                 )
               }
               break
