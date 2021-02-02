@@ -258,11 +258,11 @@ const RenderPost = ({ post, redirect, preview }) => {
 
               const isImage = type === 'image'
               const Comp = isImage ? 'img' : 'video'
-              const useWrapper = block_aspect_ratio && !block_height
+              const useWrapper = Boolean(block_aspect_ratio)
               const childStyle: CSSProperties = useWrapper
                 ? {
-                    width: '100%',
-                    height: '100%',
+                    width: '90%',
+                    height: '90%',
                     border: 'none',
                     position: 'absolute',
                     top: 0,
@@ -272,7 +272,7 @@ const RenderPost = ({ post, redirect, preview }) => {
                     border: 'none',
                     height: block_height,
                     display: 'block',
-                    maxWidth: '100%',
+                    maxWidth: '90%',
                   }
 
               let child = null
@@ -310,6 +310,7 @@ const RenderPost = ({ post, redirect, preview }) => {
                   <div
                     style={{
                       paddingTop: `${Math.round(block_aspect_ratio * 100)}%`,
+                        paddingLeft: '5%',
                       position: 'relative',
                     }}
                     className="asset-wrapper"
