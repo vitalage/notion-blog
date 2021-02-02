@@ -33,3 +33,18 @@ export default ({ titlePre = '' }) => {
       <ul>
         {navItems.map(({ label, page, link }) => (
           <li key={label}>
+            {page ? (
+              <Link href={page}>
+                <a className={pathname === page ? 'active' : undefined}>
+                  {label}
+                </a>
+              </Link>
+            ) : (
+              <ExtLink href={link}>{label}</ExtLink>
+            )}
+          </li>
+        ))}
+      </ul>
+    </header>
+  )
+}
